@@ -15,7 +15,7 @@ it.optional = optional;
 
 describe('Department', () => {
   describe('Employee subclasses', () => {
-    optional('Developer should extend Employee class', () => {
+    it.optional('Developer should extend Employee class', () => {
       assert.throws(
         () => new Employee('Lana'),
         /An object of an abstract "Employee" class cannot be created/
@@ -23,7 +23,7 @@ describe('Department', () => {
       assert.ok(new Developer('Lana', 1000, 500) instanceof Employee);
     });
 
-    optional('Manager should extend Employee class', () => {
+    it.optional('Manager should extend Employee class', () => {
       assert.throws(
         () => new Employee('Lana'),
         /An object of an abstract "Employee" class cannot be created/
@@ -31,7 +31,7 @@ describe('Department', () => {
       assert.ok(new Manager('Lana', 1000, 500) instanceof Employee);
     });
 
-    optional('Intern should extend Employee class', () => {
+    it.optional('Intern should extend Employee class', () => {
       assert.throws(
         () => new Employee('Lana'),
         /An object of an abstract "Employee" class cannot be created/
@@ -39,7 +39,7 @@ describe('Department', () => {
       assert.ok(new Intern('Lana', 1000) instanceof Employee);
     });
 
-    optional(
+    it.optional(
       'Developer instance should return correct name, role and salary',
       () => {
         const dev = new Developer('Lana', 1000, 500);
@@ -56,7 +56,7 @@ describe('Department', () => {
       }
     );
 
-    optional(
+    it.optional(
       'Manager instance should return correct name, role and salary',
       () => {
         const mgr = new Manager('Nicole', 1000, 500);
@@ -73,7 +73,7 @@ describe('Department', () => {
       }
     );
 
-    optional(
+    it.optional(
       'Intern instance should return correct name, role and salary',
       () => {
         const intern = new Intern('Elsa', 1000);
@@ -92,7 +92,7 @@ describe('Department', () => {
   });
 
   describe('Department instance', () => {
-    optional('should add employee', () => {
+    it.optional('should add employee', () => {
       const dept = new Department();
 
       const dev1 = new Developer('Lana', 1000, 500);
@@ -104,7 +104,7 @@ describe('Department', () => {
       assert.strictEqual(dept.getEmployees().length, 2);
     });
 
-    optional('should throw when adding invalid employee', () => {
+    it.optional('should throw when adding invalid employee', () => {
       const dept = new Department();
 
       const dev = new Developer('Lana', 1000, 500);
@@ -129,7 +129,7 @@ describe('Department', () => {
       }
     });
 
-    optional('should calculate total department salary', () => {
+    it.optional('should calculate total department salary', () => {
       const dept = new Department();
 
       const dev1 = new Developer('Lana', 1000, 500);
@@ -143,7 +143,7 @@ describe('Department', () => {
       assert.strictEqual(dept.getTotalSalary(), 4000);
     });
 
-    optional('should filter employees by role', () => {
+    it.optional('should filter employees by role', () => {
       const dept = new Department();
 
       const dev1 = new Developer('Lana', 1000, 500);
@@ -163,7 +163,7 @@ describe('Department', () => {
       assert.deepStrictEqual(interns, [intern]);
     });
 
-    optional('should calculate average department salary', () => {
+    it.optional('should calculate average department salary', () => {
       const dept = new Department();
 
       const dev1 = new Developer('Lana', 1000, 500);
@@ -177,14 +177,14 @@ describe('Department', () => {
       assert.strictEqual(dept.getAverageSalary(), 2000);
     });
 
-    optional('should return 0 average salary for empty department', () => {
+    it.optional('should return 0 average salary for empty department', () => {
       const dept = new Department();
 
       assert.strictEqual(dept.getAverageSalary(), 0);
     });
   });
 
-  optional('should not contain commentaries', () => {
+  it.optional('should not contain commentaries', () => {
     const dev = new Developer('', 0, 0);
     const mngr = new Manager('', 0, 0);
     const intern = new Intern('', 0);

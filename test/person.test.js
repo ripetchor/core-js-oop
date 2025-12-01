@@ -14,7 +14,7 @@ describe('Person', () => {
     Person.totalHeight = 0;
   });
 
-  optional(
+  it.optional(
     'should correctly construct a person and update count and totals',
     () => {
       const u1 = new Person(70, 180);
@@ -32,7 +32,7 @@ describe('Person', () => {
     }
   );
 
-  optional('should update "totalWeight" when "weight" changes', () => {
+  it.optional('should update "totalWeight" when "weight" changes', () => {
     const u1 = new Person(70, 180);
     const u2 = new Person(80, 200);
 
@@ -42,7 +42,7 @@ describe('Person', () => {
     assert.strictEqual(Person.totalWeight, 200);
   });
 
-  optional('should update "totalHeight" when "height" changes', () => {
+  it.optional('should update "totalHeight" when "height" changes', () => {
     const u1 = new Person(70, 180);
     const u2 = new Person(80, 200);
 
@@ -52,7 +52,7 @@ describe('Person', () => {
     assert.strictEqual(Person.totalHeight, 400);
   });
 
-  optional('should correctly calculate average weight', () => {
+  it.optional('should correctly calculate average weight', () => {
     const weights = [60, 70, 80, 90, 100, 110, 300];
     weights.forEach((weight) => new Person(weight, 180));
 
@@ -61,7 +61,7 @@ describe('Person', () => {
     assert.strictEqual(Person.averageWeight(), expected);
   });
 
-  optional('should correctly calculate average height', () => {
+  it.optional('should correctly calculate average height', () => {
     const heights = [155, 160, 170, 180, 190, 200, 210];
     heights.forEach((height) => new Person(90, height));
 
@@ -70,7 +70,7 @@ describe('Person', () => {
     assert.strictEqual(Person.averageHeight(), expected);
   });
 
-  optional('should return 0 for averages when no person created', () => {
+  it.optional('should return 0 for averages when no person created', () => {
     assert.strictEqual(Person.count, 0);
     assert.strictEqual(Person.totalWeight, 0);
     assert.strictEqual(Person.totalHeight, 0);
@@ -79,7 +79,7 @@ describe('Person', () => {
     assert.strictEqual(Person.averageHeight(), 0);
   });
 
-  optional('should use static properties for average calculations', () => {
+  it.optional('should use static properties for average calculations', () => {
     new Person(50, 160);
     new Person(70, 180);
 
@@ -94,7 +94,7 @@ describe('Person', () => {
     assert.strictEqual(Person.averageHeight(), expectedAverageHeight);
   });
 
-  optional('should not contain commentaries', () => {
+  it.optional('should not contain commentaries', () => {
     [Person.averageHeight, Person.averageWeight].forEach((fn) =>
       assertNoComments(fn)
     );
